@@ -32,3 +32,6 @@ h1, button{
   border-right: solid black 5px;
   border-left: solid black 5px;
 }
+#displayWinner {
+  font-size: 100px;
+}

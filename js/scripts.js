@@ -28,8 +28,15 @@ GameBoard.prototype.checkWinConditions = function() {
 };
 
 GameBoard.prototype.declareWinner = function() {
-  alert("winner is " + this.winner);
-  
+  $("#displayWinner").text(this.winner + " wins!");
+  for (i = 0; i < 3; i++) {
+    for (j = 0; j < 3; j++) {
+      if (this.lines[i][j] === "1") {
+        this.lines[i][j] = "";
+      }
+    }
+  }
+  debugger;
 };
 
 GameBoard.prototype.switchPlayer = function() {
@@ -134,10 +141,12 @@ $(document).ready(function() {
     $("#bottom-right").children("span").text(board.lines[2][2]);
     if (board.winner !== "none") {
       board.declareWinner();
+
     }
   });
   $("#playAgainBtn").click(function() {
     board.newGame();
     $(".cell").children("span").text("");
+    $("#displayWinner").text("");
   });
 });
