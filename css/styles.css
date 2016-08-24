@@ -1,0 +1,34 @@
+h1, button{
+  text-align: center;
+}
+.gameLines {
+}
+.cell {
+  height: 215px;
+  text-align: center;
+}
+
+.character {
+  font-size: 100pt;
+  font-weight: bold;
+}
+
+#top-middle {
+  border-right: solid black 5px;
+  border-left: solid black 5px;
+}
+#middle-left {
+  border-top: solid black 5px;
+  border-bottom: solid black 5px;
+}
+#middle-middle {
+  border: solid black 5px;
+}
+#middle-right {
+  border-top: solid black 5px;
+  border-bottom: solid black 5px;
+}
+#bottom-middle {
+  border-right: solid black 5px;
+  border-left: solid black 5px;
+}

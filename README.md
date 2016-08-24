@@ -20,13 +20,13 @@ _{Leave nothing to chance! You want it to be easy for potential users, employers
 
 ## Specification
 
-_When a square is clicked, it will change to the current player's mark_
-* _Input: square clicked_
-* _Output: square is marked with X or O
+_When a square is selected, it will change to the current player's mark_
+* _Example Input: square(1, 2)_
+* _Example Output: square(1, 2) = "X"_
 
-_If clicked square is already claimed, nothing happens_
-* _Input: square marked X is clicked_
-* _Output: nothing_
+_If cell index is already marked with an "X" or an "O", nothing happens_
+* _Example Input: set square(1, 2) to "X"_
+* _Example Output: square(1, 2) = "O"_
 
 _When a player has three marks in a row, they are declared the winner_
 * _Input: three Xs or three Os in a row_
@@ -36,7 +36,7 @@ _When a player has three marks in a row, they are declared the winner_
 
 _When reset button is clicked, board is cleared_
 * _Input: reset button clicked_
-* _Output: board cleared_ 
+* _Output: board cleared_
 
 ## Known Bugs
 

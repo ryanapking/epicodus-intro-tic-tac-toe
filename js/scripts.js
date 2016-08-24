@@ -1,6 +1,8 @@
+// business logic
 function GameBoard() {
   this.lines = [["1", "1", "1"],["1", "1", "1"],["1", "1", "1"]];
   this.currentPlayer = "X";
+  this.winner = "none";
 };
 
 GameBoard.prototype.checkWinConditions = function() {
@@ -17,11 +19,17 @@ GameBoard.prototype.checkWinConditions = function() {
   var O = winConditions.indexOf("OOO");
   if (X !== -1) {
     //do stuff because X wins
-    return "X";
+    this.winner = "X";
+
   } else if (O !== -1) {
     // do stuff because O wins
-    return "O";
+    this.winner = "O";
   } else return;
+};
+
+GameBoard.prototype.declareWinner = function() {
+  alert("winner is " + this.winner);
+  
 };
 
 GameBoard.prototype.switchPlayer = function() {
@@ -36,7 +44,14 @@ GameBoard.prototype.markSpace = function(index1, index2) {
   if (this.lines[index1][index2] === "1") {
     this.lines[index1][index2] = this.currentPlayer;
     this.switchPlayer();
+    this.checkWinConditions();
   }
+};
+
+GameBoard.prototype.newGame = function() {
+  this.lines = [["1", "1", "1"],["1", "1", "1"],["1", "1", "1"]];
+  this.currentPlayer = "X";
+  this.winner = "none";
 };
 
 function WinCount () {
@@ -51,13 +66,78 @@ WinCount.prototype.winner = function(whoWon) {
     this.xWins += 1;
   }
 }
-
-
+// user interface logic
+var board = new GameBoard();
 $(document).ready(function() {
-  var board = new GameBoard();
+
   var wins = new WinCount();
   var winner = board.checkWinConditions();
   wins.winner();
-
-
+  $("#top-left").click(function(){
+    board.markSpace(0,0);
+    $("#top-left").children("span").text(board.lines[0][0]);
+    if (board.winner !== "none") {
+      board.declareWinner();
+    }
+  });
+  $("#top-middle").click(function(){
+    board.markSpace(0,1);
+    $("#top-middle").children("span").text(board.lines[0][1]);
+    if (board.winner !== "none") {
+      board.declareWinner();
+    }
+  });
+  $("#top-right").click(function(){
+    board.markSpace(0,2);
+    $("#top-right").children("span").text(board.lines[0][2]);
+    if (board.winner !== "none") {
+      board.declareWinner();
+    }
+  });
+  $("#middle-left").click(function(){
+    board.markSpace(1,0);
+    $("#middle-left").children("span").text(board.lines[1][0]);
+    if (board.winner !== "none") {
+      board.declareWinner();
+    }
+  });
+  $("#middle-middle").click(function(){
+    board.markSpace(1,1);
+    $("#middle-middle").children("span").text(board.lines[1][1]);
+    if (board.winner !== "none") {
+      board.declareWinner();
+    }
+  });
+  $("#middle-right").click(function(){
+    board.markSpace(1,2);
+    $("#middle-right").children("span").text(board.lines[1][2]);
+    if (board.winner !== "none") {
+      board.declareWinner();
+    }
+  });
+  $("#bottom-left").click(function(){
+    board.markSpace(2,0);
+    $("#bottom-left").children("span").text(board.lines[2][0]);
+    if (board.winner !== "none") {
+      board.declareWinner();
+    }
+  });
+  $("#bottom-middle").click(function(){
+    board.markSpace(2,1);
+    $("#bottom-middle").children("span").text(board.lines[2][1]);
+    if (board.winner !== "none") {
+      board.declareWinner();
+    }
+  });
+  $("#bottom-right").click(function(){
+    board.markSpace(2,2);
+    $("#bottom-right").children("span").text(board.lines[2][2]);
+    if (board.winner !== "none") {
+      board.declareWinner();
+    }
+  });
+  $("#playAgainBtn").click(function() {
+    board.newGame();
+    $(".cell").children("span").text("");
+  });
 });
