@@ -18,6 +18,26 @@ _{This is a detailed description of your application. Its purpose and usage.  Gi
 
 _{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
 
+## Specification
+
+_When a square is clicked, it will change to the current player's mark_
+* _Input: square clicked_
+* _Output: square is marked with X or O
+
+_If clicked square is already claimed, nothing happens_
+* _Input: square marked X is clicked_
+* _Output: nothing_
+
+_When a player has three marks in a row, they are declared the winner_
+* _Input: three Xs or three Os in a row_
+* _Output: X wins! or O wins!_
+* _Output: Win counter is incremented for winner_
+* _Output: Winning condition is marked out_
+
+_When reset button is clicked, board is cleared_
+* _Input: reset button clicked_
+* _Output: board cleared_ 
+
 ## Known Bugs
 
 _{Are there issues that have not yet been resolved that you want to let users know you know?  Outline any issues that would impact use of your application.  Share any workarounds that are in place. }_
