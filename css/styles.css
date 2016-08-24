@@ -1,18 +1,23 @@
-h1, button{
+h1, body{
   text-align: center;
-}
-.gameLines {
 }
 .cell {
   height: 215px;
   text-align: center;
 }
-
 .character {
   font-size: 100pt;
   font-weight: bold;
 }
-
+.right {
+  float: right;
+}
+.left {
+  float: left;
+}
+#score {
+  text-align: center;
+}
 #top-middle {
   border-right: solid black 5px;
   border-left: solid black 5px;

@@ -10,8 +10,10 @@
   <body>
     <div class="container">
       <h1>Tic-Tac-Toe</h1>
-      <div class="scoreboard">
-
+      <div class="jumbotron" id="scoreboard">
+        <h3 class="right">Player 2 (O)</h3>
+        <h3 class="left">Player 1 (X)</h3>
+        <h3 id="score"><span id="xWins"></span> - <span id="oWins"></span><h3>
       </div>
 
       <div class="row">
@@ -60,7 +62,7 @@
         </div>
       </div>
       <h1 id="displayWinner"></h1>
-      <button type="submit" name="button" id="playAgainBtn">Play Again!</button>
+      <button type="submit" class="btn btn-success" name="button" id="playAgainBtn">Play Again!</button>
     </div>
   </body>
 </html>

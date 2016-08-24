@@ -3,7 +3,21 @@ function GameBoard() {
   this.lines = [["1", "1", "1"],["1", "1", "1"],["1", "1", "1"]];
   this.currentPlayer = "X";
   this.winner = "none";
+  this.winCount = new WinCount();
+  // this.cellClassArray = [];
+  // this.createCellClassArray();
 };
+
+// GameBoard.prototype.createCellClassArray = function() {
+//   this.winConditions.push(["top-left","top-middle","top-right"]);
+//   this.winConditions.push(["middle-left", "middle-middle","middle-right"]);
+//   this.winConditions.push(["bottom-left","bottom-middle","bottom-right"]);
+//   this.winConditions.push(["top-left","middle-left","bottom-left"]);
+//   this.winConditions.push(["top-middle","middle-middle","bottom-middle"]);
+//   this.winConditions.push(["top-right","middle-right","bottom-right"]);
+//   this.winConditions.push(["top-left","middle-middle","bottom-right"]);
+//   this.winConditions.push(["top-right","middle-middle","bottom-left"]);
+// }
 
 GameBoard.prototype.checkWinConditions = function() {
   var winConditions = [];
@@ -20,10 +34,11 @@ GameBoard.prototype.checkWinConditions = function() {
   if (X !== -1) {
     //do stuff because X wins
     this.winner = "X";
-
+    this.winCount.winner("X");
   } else if (O !== -1) {
     // do stuff because O wins
     this.winner = "O";
+    this.winCount.winner("O");
   } else return;
 };
 
@@ -36,7 +51,7 @@ GameBoard.prototype.declareWinner = function() {
       }
     }
   }
-  debugger;
+  this.winCount.displayWinner();
 };
 
 GameBoard.prototype.switchPlayer = function() {
@@ -74,12 +89,17 @@ WinCount.prototype.winner = function(whoWon) {
   }
 }
 // user interface logic
+
+WinCount.prototype.displayWinner = function() {
+  $("#xWins").text(board.winCount.xWins);
+  $("#oWins").text(board.winCount.oWins);
+};
+
 var board = new GameBoard();
 $(document).ready(function() {
 
-  var wins = new WinCount();
-  var winner = board.checkWinConditions();
-  wins.winner();
+
+  board.winCount.displayWinner();
   $("#top-left").click(function(){
     board.markSpace(0,0);
     $("#top-left").children("span").text(board.lines[0][0]);
@@ -144,6 +164,8 @@ $(document).ready(function() {
 
     }
   });
+
+
   $("#playAgainBtn").click(function() {
     board.newGame();
     $(".cell").children("span").text("");
